@@ -1,35 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/controllers/post_controller.dart';
 import 'package:flutter_templete/pages/intro_page.dart';
-import 'package:flutter_templete/pages/tabs_page.dart';
 import 'package:flutter_templete/theme/theme.dart';
 import 'package:flutter_templete/theme/theme_service.dart';
 import 'package:flutter_templete/translation/locale_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import './utils/hex_color.dart';
-import './utils/string_utils.dart';
 
-void main() async{
-   await GetStorage.init();
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   static final box = GetStorage();
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _firebaseMessaging.requestNotificationPermissions();
+  //   _firebaseMessaging.configure(
+  //     onMessage: (Map<String, dynamic> message) async {
+  //       print(message);
+  //       if (await Vibration.hasVibrator()) {
+  //         Vibration.vibrate();
+  //       }
+  //     },
+  //     onLaunch: (Map<String, dynamic> message) async {
+  //       print("onLaunch");
+  //       print(message);
+  //       if (message["data"]["nav"] == "chat") {
+  //         Get.to(ChatScreen(), arguments: [
+  //           message["data"]["sender"] ?? "",
+  //           message["data"]["userName"] ?? "",
+  //           message["data"]["mypic"] ?? ""
+  //         ]);
+  //       }
+  //       if (message["data"]["nav"] == "post") {
+  //         Get.to(PostDetails(), arguments: message["data"]["ad_id"] ?? "");
+  //       }
+  //     },
+  //     onResume: (Map<String, dynamic> message) async {
+  //       if (message["data"]["nav"] == "chat") {
+  //         Get.to(ChatScreen(), arguments: [
+  //           message["data"]["sender"] ?? "",
+  //           message["data"]["userName"] ?? "",
+  //           message["data"]["mypic"] ?? ""
+  //         ]);
+  //       }
+
+  //       if (message["data"]["nav"] == "post") {
+  //         Get.to(PostDetails(), arguments: message["data"]["ad_id"]);
+  //       }
+  //     },
+  //   );
+  // }
+
+  @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      locale:
+      locale: 
           //  box.read("lang").toString() == 'ta' ? const Locale('ta', 'TA') :
           const Locale('en', 'US'),
       fallbackLocale: LocalizationService.fallbackLocale,
       translations: LocalizationService(),
-      
+
       //  theme: ThemeData(
       //   primarySwatch: const MaterialColor(
       //     0xFF9dc332,
@@ -47,12 +90,11 @@ class MyApp extends StatelessWidget {
       //     },
       //   ),),
 
-        theme: Themes.light,
+      theme: Themes.light,
       darkTheme: Themes.dark,
-      themeMode:ThemeService().theme,
+      themeMode: ThemeService().theme,
 
       home: const Intro(),
     );
   }
 }
-

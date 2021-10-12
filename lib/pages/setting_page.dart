@@ -30,6 +30,7 @@ class _SettingPageState extends State<SettingPage> {
                 Future.delayed(const Duration(seconds: 3), () {
                   Loading().stop();
                 });
+                
               },
               icon: const Icon(Icons.search))
         ],
