@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/pages/intro_page.dart';
+import 'package:flutter_templete/pages/setting_page.dart';
 import 'package:flutter_templete/theme/theme.dart';
 import 'package:flutter_templete/theme/theme_service.dart';
 import 'package:flutter_templete/translation/locale_service.dart';
@@ -93,7 +94,6 @@ class _MyAppState extends State<MyApp> {
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: ThemeService().theme,
-
       home: const Intro(),
     );
   }

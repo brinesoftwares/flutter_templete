@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/theme/theme_service.dart';
 import 'package:flutter_templete/widgets/loader.dart';
@@ -16,7 +18,12 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   bool isTamil = false;
   bool isDark = false;
-
+  List checkBox = [
+    {"label": "box1", "value": true},
+    {"label": "box2", "value": false},
+  ];
+  int val = -1;
+  bool _switchValue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +33,11 @@ class _SettingPageState extends State<SettingPage> {
         actions: [
           IconButton(
               onPressed: () {
-                Loading().start(context);
-                Future.delayed(const Duration(seconds: 3), () {
-                  Loading().stop();
-                });
-                
+                // Loading().start(context);
+                // Future.delayed(const Duration(seconds: 3), () {
+                //   Loading().stop();
+                // });
+                cupertinoDialog(context);
               },
               icon: const Icon(Icons.search))
         ],
@@ -54,6 +61,28 @@ class _SettingPageState extends State<SettingPage> {
               'Change Theme',
             ),
             onPressed: ThemeService().switchTheme,
+          ),
+                
+          ],
+      ),
+    );
+  }
+
+  //  cupertinoDialog(context);
+  cupertinoDialog(_context) {
+    return showCupertinoDialog(
+      context: _context,
+      builder: (context) => CupertinoAlertDialog(
+        title: const Text("title!"),
+        content: const Text("content!"),
+        actions: <Widget>[
+          CupertinoDialogAction(
+            child: const Text("cancel"),
+            onPressed: () => Navigator.of(context).pop(false),
+          ),
+          CupertinoDialogAction(
+            child: const Text("ok"),
+            onPressed: () => Navigator.of(context).pop(true),
           ),
         ],
       ),
