@@ -676,5 +676,34 @@
 		  "          )"
 		],
 		"description": "rich text"
+	  },
+      "text input": {
+		"prefix": "input_text",
+		"body": [
+		  "            const TextField(",
+		  "              decoration: InputDecoration(",
+		  "                // filled: true,",
+		  "                // fillColor: Colors.yellow,",
+		  "                border: OutlineInputBorder(",
+		  "                  borderRadius: BorderRadius.all(Radius.circular(4.0)),",
+		  "                  borderSide: BorderSide(width: 1.0),",
+		  "                ),",
+		  "                enabledBorder: OutlineInputBorder(",
+		  "                  borderSide: BorderSide(color: Colors.grey),",
+		  "                ),",
+		  "                focusedBorder: OutlineInputBorder(",
+		  "                  borderSide: BorderSide(color: Colors.green),",
+		  "                ),",
+		  "                contentPadding: EdgeInsets.all(10.0),",
+		  "                hintText: 'Tell us about yourself',",
+		  "                labelText: 'Life story',",
+		  "                prefixIcon: Icon(",
+		  "                  Icons.person,",
+		  "                  color: Colors.green,",
+		  "                ),",
+		  "              ),",
+		  "            ),"
+		],
+		"description": "text input"
 	  }
 }
